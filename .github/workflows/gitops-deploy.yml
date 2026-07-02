@@ -29,7 +29,7 @@ permissions:
 env:
   AWS_REGION: us-east-1
   AWS_ACCOUNT_ID: "306667525254"
-  ECR_REPOSITORY: devship-demo-frontend
+  ECR_REPOSITORY: devship-demo-backend
   GITOPS_REPO: MiguelSilva04/devship-gitops
 
 jobs:
@@ -87,7 +87,7 @@ jobs:
 
       - name: Update image tag in GitOps manifest
         run: |
-          GITOPS_PATH="apps/demo-app/${{ inputs.environment }}/frontend-deployment.yaml"
+          GITOPS_PATH="apps/demo-app/${{ inputs.environment }}/backend-deployment.yaml"
           ECR_IMAGE="$AWS_ACCOUNT_ID.dkr.ecr.$AWS_REGION.amazonaws.com/$ECR_REPOSITORY:$IMAGE_TAG"
 
           sed -i "s|^\( *image: \).*|\1$ECR_IMAGE|" gitops/$GITOPS_PATH

@@ -7,7 +7,7 @@ class Handler(BaseHTTPRequestHandler):
     def do_GET(self):
         self.send_response(200)
         self.end_headers()
-        self.wfile.write("Hello World!\n".encode("utf-8"))
+        self.wfile.write("Hello Worldddd :) !\n".encode("utf-8"))
 
 if __name__ == "__main__":
     HTTPServer(("0.0.0.0", PORT), Handler).serve_forever()
